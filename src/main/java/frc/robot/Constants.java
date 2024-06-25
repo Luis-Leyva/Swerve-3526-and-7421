@@ -1,5 +1,6 @@
 package frc.robot;
 
+import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.util.Units;
 
 public final class Constants {
@@ -23,6 +24,19 @@ public final class Constants {
 		public static final double kRotationToDegree = 360.0 / kTurningGearRatio;
 		public static final double kRPMToDegreePerSecond = kRotationToDegree / 60.0;
 
+	}
+
+	public static final class SwerveChassisConstants {
+
+		public static final double kTrackWidth = Units.inchesToMeters(23.0);
+		public static final double kWheelBase = Units.inchesToMeters(23.0);
+
+		// Kinematics
+		public static final Translation2d[] kModuleLocation = {
+				new Translation2d(kWheelBase / 2.0, kTrackWidth / 2.0), // Front left
+				new Translation2d(kWheelBase / 2.0, -kTrackWidth / 2.0), // Front right
+				new Translation2d(-kWheelBase / 2.0, kTrackWidth / 2.0),
+				new Translation2d(-kWheelBase / 2.0, -kTrackWidth / 2.0) };
 	}
 
 }
