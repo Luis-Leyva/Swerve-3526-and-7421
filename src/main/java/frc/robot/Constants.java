@@ -9,6 +9,8 @@ public final class Constants {
 
 		// Max speed of the drive motor
 		public static final double kMaxSpeed = 4.0; // meters per second
+		public static final double kMaxAcceleration = 3.0; // meters per second squared
+		public static final double KMaxAngularSpeed = 2;
 
 		// Ratio drive motor and turn motor
 		public static final double kDriveGearRatio = 6.12;
