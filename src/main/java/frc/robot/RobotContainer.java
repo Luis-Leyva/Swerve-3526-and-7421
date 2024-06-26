@@ -4,7 +4,12 @@
 
 package frc.robot;
 
+import com.fasterxml.jackson.databind.util.Named;
+import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.auto.NamedCommands;
+
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 
@@ -16,7 +21,13 @@ public class RobotContainer {
 	SwerveChassis chassis = new SwerveChassis();
 	XboxController controller = new XboxController(0);
 
+	private final SendableChooser<Command> autoChooser;
+
 	public RobotContainer() {
+		NamedCommands.registerCommand("Test Command", Commands.print("Test Command"));
+
+		autoChooser = AutoBuilder.buildAutoChooser();
+
 		configureBindings();
 	}
 
@@ -25,6 +36,6 @@ public class RobotContainer {
 	}
 
 	public Command getAutonomousCommand() {
-		return Commands.print("No autonomous command configured");
+		return autoChooser.getSelected();
 	}
 }
